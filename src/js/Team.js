@@ -38,20 +38,16 @@ export default class Team {
   }
 
   [Symbol.iterator]() {
+    let current = 0;
+    const { teams } = this;
     return {
       next() {
-        let current = 0;
-        const { teams } = this;
-        return {
-          next() {
-            const res = {
-              done: current >= teams.length,
-              value: teams[current],
-            };
-            current++;
-            return res;
-          },
+        const res = {
+          done: current >= teams.length,
+          value: teams[current],
         };
+        current++;
+        return res;
       },
     };
   }
